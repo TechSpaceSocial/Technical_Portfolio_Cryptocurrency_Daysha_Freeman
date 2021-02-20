@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+ 
+int main() {
+    char *choice = NULL;
+    size_t len = 0;
+    size_t read;
+    const char* resturantNames[10] = {
+  "In and Out Burger",
+  "Burger King",
+  "Del Taco",
+  "Subway",
+  "McDonalds",
+  "Dairy Queen",
+  "Panda Express",
+  "Chipotle",
+  "Smashburger",
+  "Culvers" 
+    };
+    srand(time(NULL));
+    printf("Fast Food Picker for Kingman, AZ \n");
+    while (1) {
+        printf("\n Press ANY KEY and then press Enter for your random LUNCH CHOICE, if you don't like it please try again, THANK YOU : ");
+        read = getline(&choice, &len, stdin);
+        if (read < 2) break;
+        printf("\n%s\n", resturantNames[rand() % 10]);
+    }
+    if (choice) free(choice);
+    return 0;
+}
